@@ -66,12 +66,24 @@ class Game
       finish_game(player2)
       return true
     end
+
+    if draw?
+      puts "Draw!"
+      return true
+    end
+
     false
   end
 
   def finish_game(player)
     draw
     puts "Player #{player.name} won!"
+  end
+
+  def draw?
+    grid.all? do |row|
+      row.all? { |el| el != " "}
+    end
   end
 
   def restart
